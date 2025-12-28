@@ -31,45 +31,67 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 * **Testing:** Multi-threaded Python script to simulate concurrent attacks.
 
 ---
-##🚀 How to Run Locally
-1. Clone the Repository
-Bash
-
-git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
+🚀 Run Locally
+1️⃣ Clone the Repository
+git clone https://github.com/MRoshaan/flashsale-concurrency-engine.git
 cd flashsale-concurrency-engine
-2. Set up Virtual Environment
-Bash
 
+2️⃣ Create & Activate Virtual Environment
 python -m venv venv
+
 # Windows
 .\venv\Scripts\activate
-# Mac/Linux
+
+# macOS / Linux
 source venv/bin/activate
-3. Install Dependencies
-Bash
 
+3️⃣ Install Dependencies
 pip install -r requirements.txt
-4. Configure Database
-Create a .env file in the root directory (this file is ignored by Git for security). Add your MySQL credentials:
 
-Code snippet
+4️⃣ Configure Environment Variables
+
+Create a .env file in the project root (this file is ignored by Git):
 
 DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/flashsale_db
-5. Run the Server
-Bash
 
+
+⚠️ Replace YOUR_PASSWORD with your MySQL password.
+
+5️⃣ Run the Server
 uvicorn app.main:app --reload
-🧪 Simulation: The "Attack" Script
-To prove the system works, this project includes a stress-test script (attack.py) that launches 20 concurrent threads trying to buy an item with only 5 units in stock.
 
-Keep the server running in Terminal 1.
 
-Open a new terminal, activate the environment, and run:
+Server will start at:
 
-Bash
+http://127.0.0.1:8000
+
+🧪 Concurrency Stress Test (Attack Simulation)
+
+This project includes attack.py to prove the fix works.
+
+Stock available: 5
+
+Concurrent requests: 20 threads
+
+Steps:
+
+Keep the API server running
+
+Open a new terminal
+
+Activate virtual environment
+
+Run:
 
 python attack.py
-Expected Result: You will see exactly 5 "Sold!" messages and 15 "Out of Stock" failures. If the locking implementation were broken, you would see 20 "Sold!" messages.
+
+✅ Expected Output:
+
+5 → Sold!
+
+15 → Out of Stock
+
+❌ Without locking, all 20 would succeed (bug).
 ---
 ## 📂 Project Structure
 ```bash
