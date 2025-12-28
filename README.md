@@ -31,23 +31,7 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 * **Testing:** Multi-threaded Python script to simulate concurrent attacks.
 
 ---
-
-## 📂 Project Structure
-```bash
-flashsale_engine/
-│
-├── app/
-│   ├── __init__.py
-│   ├── main.py          # FastAPI Endpoints
-│   ├── database.py      # DB Connection & Session
-│   ├── models.py        # SQLAlchemy Tables
-│   └── schemas.py       # Pydantic Validators
-│
-├── .env                 # Environment Variables (Ignored by Git)
-├── attack.py            # Concurrency Stress Test Script
-└── requirements.txt     # Dependencies
-'''
-🚀 How to Run Locally
+##🚀 How to Run Locally
 1. Clone the Repository
 Bash
 
@@ -86,8 +70,18 @@ Bash
 
 python attack.py
 Expected Result: You will see exactly 5 "Sold!" messages and 15 "Out of Stock" failures. If the locking implementation were broken, you would see 20 "Sold!" messages.
-
-👤 Author
-M. Roshaan
-
-Backend Engineer | FastAPI & Cloud Enthusiast
+---
+## 📂 Project Structure
+```bash
+flashsale_engine/
+│
+├── app/
+│   ├── __init__.py
+│   ├── main.py          # FastAPI Endpoints
+│   ├── database.py      # DB Connection & Session
+│   ├── models.py        # SQLAlchemy Tables
+│   └── schemas.py       # Pydantic Validators
+│
+├── .env                 # Environment Variables (Ignored by Git)
+├── attack.py            # Concurrency Stress Test Script
+└── requirements.txt     # Dependencies
