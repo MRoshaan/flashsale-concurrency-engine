@@ -69,6 +69,26 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 
 ---
 
+## 🧪 Concurrency Stress Test (Proof of Correctness)
+To prove that the locking works, this project includes a stress-test script (`attack.py`).
+
+### Scenario
+* **Stock available:** 5 units
+* **Concurrent buyers:** 20 threads
+
+### Run the Test
+1. Keep the FastAPI server running.
+2. Open a new terminal.
+3. Activate the virtual environment.
+4. Run the script:
+    ```bash
+    python attack.py
+    ```
+
+### ✅ Expected Output
+```text
+5 successful purchases (Sold!)
+15 failures (Out of Stock)
 ## 📂 Project Structure
 ```bash
 flashsale_engine/
