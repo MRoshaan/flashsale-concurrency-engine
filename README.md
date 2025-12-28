@@ -1,5 +1,7 @@
 # ⚡ FlashSale Concurrency Engine
 
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue) ![FastAPI](https://img.shields.io/badge/FastAPI-0.95%2B-green) ![MySQL](https://img.shields.io/badge/Database-MySQL-orange) ![SQLAlchemy](https://img.shields.io/badge/ORM-SQLAlchemy-red)
+
 A robust, high-concurrency backend API built with **FastAPI** and **MySQL**. This project demonstrates how to handle **Race Conditions** in inventory systems (like Black Friday sales) using **ACID transactions** and **Pessimistic Locking**.
 
 ---
@@ -29,9 +31,9 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 * **Testing:** Multi-threaded Python script to simulate concurrent attacks.
 
 ---
-📂 Project Structure
-Bash
 
+## 📂 Project Structure
+```bash
 flashsale_engine/
 │
 ├── app/
@@ -44,40 +46,47 @@ flashsale_engine/
 ├── .env                 # Environment Variables (Ignored by Git)
 ├── attack.py            # Concurrency Stress Test Script
 └── requirements.txt     # Dependencies
----
-## 🚀 How to Run Locally
+🚀 How to Run Locally
+1. Clone the Repository
+Bash
 
-### 1. Clone the Repository
-```bash
 git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
 cd flashsale-concurrency-engine
+2. Set up Virtual Environment
+Bash
 
-## 2. Set up Virtual Envviroment
 python -m venv venv
 # Windows
-venv\Scripts\activate
+.\venv\Scripts\activate
 # Mac/Linux
 source venv/bin/activate
+3. Install Dependencies
+Bash
 
-## 3. Install Dependencies 
 pip install -r requirements.txt
-
-## 4. Configure Database
+4. Configure Database
 Create a .env file in the root directory (this file is ignored by Git for security). Add your MySQL credentials:
+
+Code snippet
+
 DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/flashsale_db
+5. Run the Server
+Bash
 
-## 5. Run the Server
 uvicorn app.main:app --reload
-
-## 6. 🧪 Simulation: The "Attack" Script
+🧪 Simulation: The "Attack" Script
 To prove the system works, this project includes a stress-test script (attack.py) that launches 20 concurrent threads trying to buy an item with only 5 units in stock.
 
 Keep the server running in Terminal 1.
 
 Open a new terminal, activate the environment, and run:
+
+Bash
+
 python attack.py
-You will see exactly 5 "Sold!" messages and 15 "Out of Stock" failures. If the locking implementation were broken, you would see 20 "Sold!" messages.
+Expected Result: You will see exactly 5 "Sold!" messages and 15 "Out of Stock" failures. If the locking implementation were broken, you would see 20 "Sold!" messages.
 
 👤 Author
-M. Roshaan Backend Engineer | FastAPI & Cloud Enthusiast
+M. Roshaan
 
+Backend Engineer | FastAPI & Cloud Enthusiast
