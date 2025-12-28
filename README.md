@@ -86,9 +86,9 @@ To prove that the locking works, this project includes a stress-test script (`at
     ```
 
 ### ✅ Expected Output
-```text
+
 5 successful purchases (Sold!)
-15 failures (Out of Stock)'''
+15 failures (Out of Stock)
 ---
 ## 📂 Project Structure
 ```bash
