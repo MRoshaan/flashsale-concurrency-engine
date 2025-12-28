@@ -34,13 +34,6 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 
 ## 🚀 Run Locally
 
-### 1️⃣ Clone the Repository
-```bash
-git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
-cd flashsale-concurrency-engine
-
-## 🚀 Run Locally
-
 1. **Clone the Repository**
     ```bash
     git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
@@ -50,8 +43,12 @@ cd flashsale-concurrency-engine
 2. **Create & Activate Virtual Environment**
     ```bash
     python -m venv venv
+    
     # Windows
     .\venv\Scripts\activate
+    
+    # macOS / Linux
+    source venv/bin/activate
     ```
 
 3. **Install Dependencies**
@@ -59,34 +56,30 @@ cd flashsale-concurrency-engine
     pip install -r requirements.txt
     ```
 
+4. **Configure Environment Variables**
+    Create a `.env` file in the project root:
+    ```ini
+    DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/flashsale_db
+    ```
 
-    ---
+5. **Run the Server**
+    ```bash
+    uvicorn app.main:app --reload
+    ```
+
+---
 
 ## 📂 Project Structure
-
 ```bash
-
 flashsale_engine/
-
 │
-
 ├── app/
-
 │   ├── __init__.py
-
 │   ├── main.py          # FastAPI Endpoints
-
 │   ├── database.py      # DB Connection & Session
-
 │   ├── models.py        # SQLAlchemy Tables
-
 │   └── schemas.py       # Pydantic Validators
-
 │
-
 ├── .env                 # Environment Variables (Ignored by Git)
-
 ├── attack.py            # Concurrency Stress Test Script
-
 └── requirements.txt     # Dependencies
-
