@@ -31,79 +31,62 @@ This engine solves the problem by implementing **Row-Level Locking** using SQLAl
 * **Testing:** Multi-threaded Python script to simulate concurrent attacks.
 
 ---
-🚀 Run Locally
-1️⃣ Clone the Repository
-git clone https://github.com/MRoshaan/flashsale-concurrency-engine.git
+
+## 🚀 Run Locally
+
+### 1️⃣ Clone the Repository
+```bash
+git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
 cd flashsale-concurrency-engine
 
-2️⃣ Create & Activate Virtual Environment
-python -m venv venv
+## 🚀 Run Locally
 
-# Windows
-.\venv\Scripts\activate
+1. **Clone the Repository**
+    ```bash
+    git clone [https://github.com/MRoshaan/flashsale-concurrency-engine.git](https://github.com/MRoshaan/flashsale-concurrency-engine.git)
+    cd flashsale-concurrency-engine
+    ```
 
-# macOS / Linux
-source venv/bin/activate
+2. **Create & Activate Virtual Environment**
+    ```bash
+    python -m venv venv
+    # Windows
+    .\venv\Scripts\activate
+    ```
 
-3️⃣ Install Dependencies
-pip install -r requirements.txt
-
-4️⃣ Configure Environment Variables
-
-Create a .env file in the project root (this file is ignored by Git):
-
-DATABASE_URL=mysql+pymysql://root:YOUR_PASSWORD@localhost:3306/flashsale_db
-
-
-⚠️ Replace YOUR_PASSWORD with your MySQL password.
-
-5️⃣ Run the Server
-uvicorn app.main:app --reload
+3. **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 
-Server will start at:
+    ---
 
-http://127.0.0.1:8000
-
-🧪 Concurrency Stress Test (Attack Simulation)
-
-This project includes attack.py to prove the fix works.
-
-Stock available: 5
-
-Concurrent requests: 20 threads
-
-Steps:
-
-Keep the API server running
-
-Open a new terminal
-
-Activate virtual environment
-
-Run:
-
-python attack.py
-
-✅ Expected Output:
-
-5 → Sold!
-
-15 → Out of Stock
-
-❌ Without locking, all 20 would succeed (bug).
----
 ## 📂 Project Structure
+
 ```bash
+
 flashsale_engine/
+
 │
+
 ├── app/
+
 │   ├── __init__.py
+
 │   ├── main.py          # FastAPI Endpoints
+
 │   ├── database.py      # DB Connection & Session
+
 │   ├── models.py        # SQLAlchemy Tables
+
 │   └── schemas.py       # Pydantic Validators
+
 │
+
 ├── .env                 # Environment Variables (Ignored by Git)
+
 ├── attack.py            # Concurrency Stress Test Script
+
 └── requirements.txt     # Dependencies
+
