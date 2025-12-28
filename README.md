@@ -46,6 +46,7 @@ flashsale_engine/
 ├── .env                 # Environment Variables (Ignored by Git)
 ├── attack.py            # Concurrency Stress Test Script
 └── requirements.txt     # Dependencies
+'''
 🚀 How to Run Locally
 1. Clone the Repository
 Bash
